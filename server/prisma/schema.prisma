@@ -6,3 +6,70 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Plant {
+  ogc_fid       Int    @id
+  forestry_name String
+  forestry_code String
+  kv_no         String
+  vd_no         String
+  area_ha       String
+  yarus         String
+  composition   String
+  percent_1     String
+  forest_elem   String
+  age           String
+  h             String
+  d             String
+  age_group     String
+  bonitet       String
+  forest_type   String
+  fullness      String
+  zapas_ha      String
+
+  forest_1_zapas        String
+  forest_1_zapas_za_por String
+  forest_1_percent_dil  String
+
+  forest_2_percent String
+  forest_2_elem    String
+  forest_2_age     String
+  forest_2_h       String
+  forest_2_d       String
+
+  forest_3_percent String
+  forest_3_elem    String
+  forest_3_age     String
+  forest_3_h       String
+  forest_3_d       String
+
+  forest_4_percent String
+  forest_4_elem    String
+  forest_4_age     String
+  forest_4_h       String
+  forest_4_d       String
+
+  forest_5_percent String
+  forest_5_elem    String
+  forest_5_age     String
+  forest_5_h       String
+  forest_5_d       String
+
+  fagsyl_coef String
+  pinsyl_coef String
+  querob_coef String
+  alnglu_coef String
+  betpen_coef String
+  temp_zzz    String
+  querub_coef String
+  carbet_coef String
+  acepse_coef String
+  lardec_coef String
+  picabi_coef String
+  acepla_coef String
+  fraexc_coef String
+  poptre_coef String
+  ulmus_coef  String
+  sorauc_coef String
+  salcap_coef String
+}
