@@ -11,33 +11,31 @@ export const Navbar: FC = () => {
     {
       id: 2,
       to: '/list',
-      name: 'Список рослин',
+      name: 'Список Флори і Фауни',
     },
   ];
 
   return (
-    <div className="p-2 md:p-8 order-2 md:order-[0] md:h-screen bg-gray-900 text-white flex flex-col justify-between">
-      <div className="h-full">
-        <Link to="/">
-          <h1 className="hidden md:block text-4xl text-center font-bold mb-6">
-            Ver.GIS
-          </h1>
-        </Link>
+    <div className="md:grid md:grid-cols-[min-content_1fr_64px] justify-center p-2 md:p-4 bg-gray-900 text-white">
+      <Link to="/" className="flex items-center">
+        <h1 className="hidden md:block text-4xl text-center font-bold">
+          Ver.GIS
+        </h1>
+      </Link>
 
-        <ul className="h-full flex items-center justify-center gap-8 md:flex-col md:justify-start">
-          {links.map((link) => {
-            const { id, to, name } = link;
+      <ul className="flex items-center gap-8 justify-center">
+        {links.map((link) => {
+          const { id, to, name } = link;
 
-            return (
-              <li key={id} className="flex items-center">
-                <Link to={to}>
-                  <span className="text-xl text-nowrap">{name}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+          return (
+            <li key={id} className="flex items-center">
+              <Link to={to}>
+                <span className="text-xl text-nowrap">{name}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
 
       <div className="hidden md:block">
         <img
