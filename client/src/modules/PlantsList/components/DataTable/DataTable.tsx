@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 
+import { DialogTitle } from '@radix-ui/react-dialog';
 import { useQuery } from '@tanstack/react-query';
 import {
   ColumnFiltersState,
@@ -144,16 +145,11 @@ export const DataTable: FC = () => {
     onColumnVisibilityChange: setColumnVisibility,
   });
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (!plants) {
-    return <Error />;
-  }
+  if (isLoading) return <Loader />;
+  if (!plants) return <Error />;
 
   return (
-    <div className="p-4 flex flex-col">
+    <div className="h-full p-4 flex flex-col">
       <div className="flex items-center justify-between">
         <div className="flex flex-col md:flex-row items-center gap-4">
           <DropdownMenu>
@@ -188,6 +184,8 @@ export const DataTable: FC = () => {
             <DialogTrigger className="border px-4 py-2 rounded">
               Фільтри
             </DialogTrigger>
+
+            <DialogTitle className="hidden">Фільтри</DialogTitle>
 
             <DialogContent className="w-fit md:w-full">
               <ScrollArea className="h-[500px] w-fit md:w-full px-2">

@@ -1,5 +1,8 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+import { useMapStore } from '../../modules/Map';
+import { Input } from '../ui/input';
 
 export const Navbar: FC = () => {
   const links = [
@@ -15,13 +18,43 @@ export const Navbar: FC = () => {
     },
   ];
 
+  const { pathname } = useLocation();
+  const searchValue = useMapStore((state) => state.searchValue);
+  const setSearchValue = useMapStore((state) => state.setSearchValue);
+
   return (
-    <div className="md:grid md:grid-cols-[min-content_1fr_64px] justify-center p-2 md:p-4 bg-gray-900 text-white">
-      <Link to="/" className="flex items-center">
-        <h1 className="hidden md:block text-4xl text-center font-bold">
-          Ver.GIS
-        </h1>
+    <div
+      className={`
+        flex
+        flex-col
+        gap-8
+        md:grid
+        ${
+          pathname === '/map'
+            ? 'md:grid-cols-[min-content_200px_1fr_64px]'
+            : 'md:grid-cols-[min-content_1fr_64px]'
+        }
+        items-center
+        md:gap-x-10
+        justify-center
+        p-2
+        py-4
+        md:p-4
+        bg-gray-900
+        text-white
+      `}
+    >
+      <Link to="/" className="hidden md:flex items-center">
+        <h1 className="text-4xl text-center font-bold">Ver.GIS</h1>
       </Link>
+
+      {pathname === '/map' && (
+        <Input
+          placeholder="Введіть назву рослини..."
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value)}
+        />
+      )}
 
       <ul className="flex items-center gap-8 justify-center">
         {links.map((link) => {

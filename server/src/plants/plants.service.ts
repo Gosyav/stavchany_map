@@ -11,6 +11,17 @@ export class PlantsService {
     });
   }
 
+  async getAllWithCoordinates() {
+    return await this.prisma.plant.findMany({
+      where: { forestry_name: 'Ставчанське' },
+      include: {
+        vydlis: {
+          include: { coordinates: true },
+        },
+      },
+    });
+  }
+
   findOne(id: number) {
     return this.prisma.plant.findUnique({ where: { ogc_fid: id } });
   }

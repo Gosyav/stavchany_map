@@ -5,7 +5,7 @@ import { Navbar } from './components/Navbar/Navbar';
 
 export const App: FC = () => {
   return (
-    <div>
+    <div className="h-full">
       <Navbar />
       <Outlet />
     </div>

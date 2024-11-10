@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { PlantsService } from './plants.service';
 
 @Controller('plants')
@@ -8,6 +8,11 @@ export class PlantsController {
   @Get()
   findAll() {
     return this.plantsService.findAll();
+  }
+
+  @Get('/coordinates')
+  getAllWithCoordinates() {
+    return this.plantsService.getAllWithCoordinates();
   }
 
   @Get(':id')

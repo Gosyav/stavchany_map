@@ -7,6 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Vydlis {
+  id          String        @id @default(cuid())
+  coordinates Coordinates[]
+
+  ogc_fid Int    @unique
+  Plant   Plant? @relation(fields: [ogc_fid], references: [ogc_fid])
+}
+
+model Coordinates {
+  id        String @id @default(cuid())
+  longitude Float
+  latitude  Float
+
+  Vydlis   Vydlis? @relation(fields: [vydlisId], references: [id])
+  vydlisId String
+}
+
 model Plant {
   ogc_fid       Int    @id
   forestry_name String
@@ -72,4 +89,7 @@ model Plant {
   ulmus_coef  String
   sorauc_coef String
   salcap_coef String
+
+  vydlisId String? @unique
+  vydlis   Vydlis?
 }
