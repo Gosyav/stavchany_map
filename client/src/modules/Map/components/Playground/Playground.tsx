@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -24,7 +25,7 @@ export const Playground: FC = () => {
     <section className="h-full">
       <MapContainer
         center={[49.92164, 23.744852]}
-        zoom={15}
+        zoom={13}
         scrollWheelZoom={true}
         maxBounds={[
           [50.042693, 23.88923],
@@ -36,25 +37,20 @@ export const Playground: FC = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {plantsWithCoordinates
-          .filter(
-            (plant) =>
-              !!plant.vydlis &&
-              plant.forest_elem
-                .toLowerCase()
-                .includes(searchValue.toLowerCase()),
-          )
-          .map((plant) => {
-            const { ogc_fid, vydlis, forest_elem } = plant;
-
-            return (
-              <VydlisList
-                key={ogc_fid}
-                forest_elem={forest_elem}
-                vydlis={vydlis!}
-              />
-            );
-          })}
+        {/* @ts-ignore */}
+        <MarkerClusterGroup>
+          {plantsWithCoordinates
+            .filter(
+              (plant) =>
+                !!plant.vydlis &&
+                plant.forest_elem
+                  .toLowerCase()
+                  .includes(searchValue.toLowerCase()),
+            )
+            .map((plant) => (
+              <VydlisList key={plant.ogc_fid} plant={plant} />
+            ))}
+        </MarkerClusterGroup>
       </MapContainer>
     </section>
   );
