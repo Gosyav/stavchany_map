@@ -14,4 +14,9 @@ export class AppController {
   // async create() {
   //   return await this.appService.create();
   // }
+
+  // @Get('/delete')
+  // async delete() {
+  //   return await this.appService.delete();
+  // }
 }

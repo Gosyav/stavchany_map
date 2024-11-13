@@ -30,4 +30,17 @@ export class AppService {
 
   //   return 1;
   // }
+
+  // async delete() {
+  //   const vydlises = await this.prisma.vydlis.findMany();
+  //   const filteredCoordinates = (
+  //     await this.prisma.coordinates.findMany()
+  //   ).filter((coordinate) =>
+  //     vydlises.some((vydlis) => vydlis.id === coordinate.vydlisId),
+  //   );
+
+  //   console.log(filteredCoordinates.length);
+
+  //   return 1;
+  // }
 }

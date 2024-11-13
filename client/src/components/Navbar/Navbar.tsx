@@ -45,7 +45,7 @@ export const Navbar: FC = () => {
       `}
     >
       <Link to="/" className="hidden md:flex items-center">
-        <h1 className="text-4xl text-center font-bold">Ver.GIS</h1>
+        <h1 className="text-4xl text-center font-bold">Stavchanske.GIS</h1>
       </Link>
 
       {pathname === '/map' && (

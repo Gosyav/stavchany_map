@@ -43,7 +43,7 @@ export const Playground: FC = () => {
             .filter(
               (plant) =>
                 !!plant.vydlis &&
-                plant.forest_elem
+                plant.forestry_name
                   .toLowerCase()
                   .includes(searchValue.toLowerCase()),
             )
