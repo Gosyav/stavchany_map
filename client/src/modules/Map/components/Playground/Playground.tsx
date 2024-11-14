@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
@@ -17,6 +17,14 @@ export const Playground: FC = () => {
   });
 
   const searchValue = useMapStore((state) => state.searchValue);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   if (isLoading) return <Loader />;
   if (!plantsWithCoordinates) return <Error />;
