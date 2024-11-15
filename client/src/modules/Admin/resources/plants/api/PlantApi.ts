@@ -10,7 +10,6 @@ const baseDataProvider = simpleRestDataProvider(endpoint);
 export const plantApi: DataProvider = {
   ...baseDataProvider,
   getList: async (resource, params) => {
-    console.log(params);
     const { pagination, sort, filter } = params;
     const { key = 'q' } = filter;
 

@@ -2,11 +2,15 @@ import { FC } from 'react';
 import { Admin, CustomRoutes, Resource } from 'react-admin';
 import { Navigate, Route } from 'react-router-dom';
 
-import { PlantsList, plantApi } from '../../modules/Admin';
+import { PlantsList, authProvider, plantApi } from '../../modules/Admin';
 
 export const AdminPage: FC = () => {
   return (
-    <Admin dataProvider={plantApi} basename="/admin">
+    <Admin
+      dataProvider={plantApi}
+      authProvider={authProvider}
+      basename="/admin"
+    >
       <CustomRoutes>
         <Route path="/admin" element={<Navigate to="/admin/plants" />} />
       </CustomRoutes>
