@@ -9,14 +9,4 @@ export class AppController {
   getTest(): string {
     return this.appService.getTest();
   }
-
-  // @Get('/create')
-  // async create() {
-  //   return await this.appService.create();
-  // }
-
-  // @Get('/delete')
-  // async delete() {
-  //   return await this.appService.delete();
-  // }
 }

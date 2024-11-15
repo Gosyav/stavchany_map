@@ -6,6 +6,7 @@ const bootstrap = async () => {
 
   app.enableCors({
     origin: process.env.HOST,
+    exposedHeaders: ['x-total-count'],
   });
 
   await app.listen(8080);
