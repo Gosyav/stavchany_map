@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { Admin, CustomRoutes, Resource } from 'react-admin';
+import { FC, useEffect, useState } from 'react';
+import { Admin, CustomRoutes, DataProvider, Resource } from 'react-admin';
 import { Navigate, Route } from 'react-router-dom';
 
 import {
@@ -7,13 +7,23 @@ import {
   PlantsList,
   PlantsUpdate,
   authProvider,
-  plantApi,
 } from '../../modules/Admin';
+import { buildDataProvider } from '../../modules/Admin/utils/BuildDataProvider';
 
 export const AdminPage: FC = () => {
+  const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
+
+  useEffect(() => {
+    buildDataProvider().then((provider) => setDataProvider(provider));
+  }, []);
+
+  if (!dataProvider) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Admin
-      dataProvider={plantApi}
+      dataProvider={dataProvider}
       authProvider={authProvider}
       basename="/admin"
     >

@@ -2,7 +2,10 @@ import { AuthProvider } from 'react-admin';
 
 export const authProvider: AuthProvider = {
   login: async ({ username, password }) => {
-    if (username !== 'admin' || password !== 'admin') {
+    if (
+      username !== import.meta.env.VITE_ADMIN_LOGIN ||
+      password !== import.meta.env.VITE_ADMIN_PASSWORD
+    ) {
       throw new Error('Login failed');
     }
 
