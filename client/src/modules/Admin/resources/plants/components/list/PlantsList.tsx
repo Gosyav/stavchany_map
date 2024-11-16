@@ -6,7 +6,6 @@ import {
   FilterButton,
   List,
   SearchInput,
-  ShowButton,
   TextField,
   TopToolbar,
 } from 'react-admin';
@@ -34,7 +33,6 @@ export const PlantsList: FC = () => {
         <TextField source="d" label="Діаметр (d)" />
 
         <EditButton />
-        <ShowButton />
       </Datagrid>
     </List>
   );

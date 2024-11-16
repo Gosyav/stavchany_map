@@ -2,7 +2,13 @@ import { FC } from 'react';
 import { Admin, CustomRoutes, Resource } from 'react-admin';
 import { Navigate, Route } from 'react-router-dom';
 
-import { PlantsList, authProvider, plantApi } from '../../modules/Admin';
+import {
+  PlantsCreate,
+  PlantsList,
+  PlantsUpdate,
+  authProvider,
+  plantApi,
+} from '../../modules/Admin';
 
 export const AdminPage: FC = () => {
   return (
@@ -15,7 +21,12 @@ export const AdminPage: FC = () => {
         <Route path="/admin" element={<Navigate to="/admin/plants" />} />
       </CustomRoutes>
 
-      <Resource name="plants" list={<PlantsList />} />
+      <Resource
+        name="plants"
+        list={<PlantsList />}
+        create={<PlantsCreate />}
+        edit={<PlantsUpdate />}
+      />
     </Admin>
   );
 };

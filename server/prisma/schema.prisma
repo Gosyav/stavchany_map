@@ -12,7 +12,7 @@ model Vydlis {
   coordinates Coordinates[]
 
   ogc_fid Int    @unique
-  Plant   Plant? @relation(fields: [ogc_fid], references: [ogc_fid])
+  Plant   Plant? @relation(fields: [ogc_fid], references: [ogc_fid], onDelete: Cascade)
 }
 
 model Coordinates {
@@ -20,12 +20,12 @@ model Coordinates {
   longitude Float
   latitude  Float
 
-  Vydlis   Vydlis? @relation(fields: [vydlisId], references: [id])
+  Vydlis   Vydlis? @relation(fields: [vydlisId], references: [id], onDelete: Cascade)
   vydlisId String
 }
 
 model Plant {
-  ogc_fid       Int    @id
+  ogc_fid       Int    @id @default(autoincrement())
   forestry_name String
   forestry_code String
   kv_no         String

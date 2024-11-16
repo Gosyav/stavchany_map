@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { CreatePlantDto } from 'src/plants/dto/create-plant.dto';
+import { UpdatePlantDto } from 'src/plants/dto/update-plant.dto';
 import { QueryParams } from 'src/plants/types/QueryParams';
 import { PrismaService } from 'src/prisma.service';
 
@@ -54,5 +56,20 @@ export class PlantsService {
 
   findOne(id: number) {
     return this.prisma.plant.findUnique({ where: { ogc_fid: id } });
+  }
+
+  create(createPlantDto: CreatePlantDto) {
+    return this.prisma.plant.create({ data: createPlantDto });
+  }
+
+  update(id: number, updatePlantDto: UpdatePlantDto) {
+    return this.prisma.plant.update({
+      where: { ogc_fid: id },
+      data: updatePlantDto,
+    });
+  }
+
+  deleteById(id: number) {
+    return this.prisma.plant.delete({ where: { ogc_fid: id } });
   }
 }
