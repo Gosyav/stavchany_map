@@ -3,9 +3,13 @@ import { Admin, CustomRoutes, DataProvider, Resource } from 'react-admin';
 import { Navigate, Route } from 'react-router-dom';
 
 import {
+  CoordinatesCreate,
+  CoordinatesList,
+  CoordinatesUpdate,
   PlantsCreate,
   PlantsList,
   PlantsUpdate,
+  VydlisList,
   authProvider,
 } from '../../modules/Admin';
 import { buildDataProvider } from '../../modules/Admin/utils/BuildDataProvider';
@@ -37,6 +41,15 @@ export const AdminPage: FC = () => {
         create={<PlantsCreate />}
         edit={<PlantsUpdate />}
       />
+
+      <Resource
+        name="coordinates"
+        list={<CoordinatesList />}
+        create={<CoordinatesCreate />}
+        edit={<CoordinatesUpdate />}
+      />
+
+      <Resource name="vydlis" list={<VydlisList />} />
     </Admin>
   );
 };

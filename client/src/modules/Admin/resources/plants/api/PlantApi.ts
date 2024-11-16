@@ -30,6 +30,15 @@ export const plantApi: DataProvider = {
   },
 
   // @ts-expect-error unnecessary ts error
+  getMany: async (resource, params) => {
+    return await axios
+      .get<Plant[]>(`${endpoint}/${resource}`)
+      .then(({ data: plants }) => ({
+        data: plants.map((plant) => ({ id: plant.ogc_fid, ...plant })),
+      }));
+  },
+
+  // @ts-expect-error unnecessary ts error
   getOne: async (resource, params) => {
     return await axios
       .get<Plant>(`${endpoint}/${resource}/${params.id}`)

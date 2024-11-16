@@ -14,7 +14,13 @@ export const PlantsList: FC = () => {
   return (
     <List
       title="plants"
-      filters={[<SearchInput source="q" key={1} />]}
+      filters={[
+        <SearchInput
+          source="q"
+          key={1}
+          placeholder="Шукати за лісовим елементом"
+        />,
+      ]}
       actions={
         <TopToolbar>
           <FilterButton />

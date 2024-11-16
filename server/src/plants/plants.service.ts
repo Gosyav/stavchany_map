@@ -58,8 +58,21 @@ export class PlantsService {
     return this.prisma.plant.findUnique({ where: { ogc_fid: id } });
   }
 
-  create(createPlantDto: CreatePlantDto) {
-    return this.prisma.plant.create({ data: createPlantDto });
+  async create(createPlantDto: CreatePlantDto) {
+    const createdPlant = await this.prisma.plant.create({
+      data: createPlantDto,
+    });
+
+    const createdVydlis = await this.prisma.vydlis.create({
+      data: { ogc_fid: createdPlant.ogc_fid },
+    });
+
+    await this.prisma.plant.update({
+      where: { ogc_fid: createdPlant.ogc_fid },
+      data: { vydlisId: createdVydlis.id },
+    });
+
+    return createdPlant;
   }
 
   update(id: number, updatePlantDto: UpdatePlantDto) {

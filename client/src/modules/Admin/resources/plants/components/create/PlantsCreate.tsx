@@ -5,7 +5,7 @@ import { Stack, Typography } from '@mui/material';
 
 export const PlantsCreate: FC = () => {
   return (
-    <Create title="Створити Рослину">
+    <Create redirect="list" title="Створити Рослину">
       <TabbedForm>
         <FormTab label="Основна інформація">
           <TextInput
