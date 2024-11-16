@@ -2,7 +2,6 @@ import { FC } from 'react';
 import {
   CreateButton,
   Datagrid,
-  EditButton,
   FilterButton,
   List,
   SearchInput,
@@ -15,7 +14,7 @@ export const VydlisList: FC = () => {
     <List
       title="vydlises"
       filters={[
-        <SearchInput source="q" key={1} placeholder="Шукати по ogc_fid" />,
+        <SearchInput source="q" key={1} placeholder="Шукати по id" />,
       ]}
       actions={
         <TopToolbar>
@@ -27,8 +26,6 @@ export const VydlisList: FC = () => {
       <Datagrid>
         <TextField source="id" />
         <TextField source="ogc_fid" />
-
-        <EditButton />
       </Datagrid>
     </List>
   );
